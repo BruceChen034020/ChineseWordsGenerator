@@ -91,4 +91,6 @@ function update(){
     P = createP('');
     document.body.appendChild(definitionTextBox);
     definitionDisplayed = true;
+    definitionTextBox.innerHTML = "請點選任何一個文字觀看單字注釋，或點 \"整句注釋\" 觀看整句注釋。";
+
 }
