@@ -1,3 +1,20 @@
+/*
+感謝您觀看這份程式碼
+作品名稱: 取地名
+作者: 陳光穎 Bruce Chen
+聯絡方式
+Facebook連結: https://www.facebook.com/bruce.chen.372
+    LINE ID: brucechen0
+最後修改日期: 2017/7/?
+    版本: N/A
+發表於: https://brucechen034020.github.io/
+    程式碼尺度
+N/A
+作者註解:
+    1. 如本網頁有 bug 請用 Facebook(Messenger) 通知 Bruce Chen，謝謝。
+  2. 如有任何建議，請用 Facebook(Messenger) 通知 Bruce Chen，謝謝。
+*/
+
 /* Global variables */
 var num_word; // number of words to generate (int)
 var label1; // (Label)
@@ -48,6 +65,9 @@ function setup(){
     Zhuyin_Initialize();
     Definition_initialization();
     FullDefinition_initialization();
+    prefix_initialization();
+    suffix_initialization();
+    connection_initialization();
 }
 
 /* User-defined functions */
