@@ -19,6 +19,7 @@ function Word(){
         this.button.addEventListener("click", this.word_Click);
     }
     this.word_Click = function(){ // onclick event
+        showingSentence = false;
         console.log("word_Click");
         console.log(checkBox1.checked);
         definitionTextBox.innerHTML = "";

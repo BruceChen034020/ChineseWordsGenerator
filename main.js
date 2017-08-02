@@ -36,6 +36,10 @@ var checkBox3; // (input)
 var checkBox3_label; // (Label)
 var checkBox4; // (input)
 var checkBox4_label; // (Label)
+var c1; // (boolean)
+var c2; // (boolean)
+var c3; // (boolean)
+var c4; // (boolean)
 
 /* p5 functions */
 function setup(){
@@ -64,20 +68,25 @@ function setup(){
         checkBox2.type = "checkbox";
         checkBox1.checked = true;
         checkBox2.checked = true;
+        c1 = true;
+        c2 = true;
 
         checkBox3 = document.createElement("input");
         checkBox3.type = "checkbox";
         checkBox3_label = document.createElement("label");
         checkBox3_label.innerHTML = "加後綴";
         checkBox3.checked = true;
+        c3 = true;
 
         checkBox4 = document.createElement("input");
         checkBox4.type = "checkbox";
         checkBox4_label = document.createElement("label");
         checkBox4_label.innerHTML = "加前綴";
         checkBox4.checked = true;
+        c4 = true;
 
-        //checkBox1.addEventListener("click", )
+        checkBox1.addEventListener("change", instantlyChange);
+        checkBox2.addEventListener("change", instantlyChange);
 
         console.log(Zhuyin);
     }
@@ -87,6 +96,19 @@ function setup(){
     prefix_initialization();
     suffix_initialization();
     connection_initialization();
+}
+function draw(){
+    if(c3 != checkBox3.checked && showingSentence){
+        instantlyChange();
+    }
+    if(c4 != checkBox4.checked && showingSentence){
+        instantlyChange();
+    }
+    c1 = checkBox1.checked;
+    c2 = checkBox2.checked;
+    c3 = checkBox3.checked;
+    c4 = checkBox4.checked;
+
 }
 
 /* User-defined functions */
@@ -140,4 +162,22 @@ function update(){
     definitionDisplayed = true;
     definitionTextBox.innerHTML = "請點選任何一個文字觀看單字注釋，或點 \"整句注釋\" 觀看整句注釋。";
 
+}
+function instantlyChange(){ // instantly change the content of definition textbox
+    var t = globalDefinitionB4;
+    if(checkBox4.checked) {
+        var r2 = Math.random();
+        r2 *= prefix.length;
+        r2 = Math.floor(r2);
+        t += prefix[r2];
+    }
+    t += globalDefinition;
+    if(checkBox3.checked) {
+        var r3 = Math.random();
+        r3 *= suffix.length;
+        r3 = Math.floor(r3);
+        t += suffix[r3];
+    }
+    definitionTextBox.innerHTML = t;
+    definitionTextBox.value = t;
 }

@@ -1,33 +1,40 @@
+var globalDefinition; // global value for the definition in the textbox (string)
+var globalDefinitionB4; // global value for the text before definition in the textbox (string)
+var showingSentence; // whether this is showing the sentence definition (boolean)
+
 function SentenceDefinition(){
     this.button; // (Button)
     let self = this; // (SentenceDefinition)
     this.parent; // (Sentence)
-    this.initialize = function(){
+    this.initialize = function(){ // (void)
         this.button = document.createElement("button");
         document.body.appendChild(this.button);
         this.button.innerHTML = "整句注釋";
         this.button.addEventListener("click", this.sentence_click);
     }
-    this.sentence_click = function(){
-        definitionTextBox.innerHTML = "";
-        definitionTextBox.value = "";
+    this.sentence_click = function(){ // onclick event (void)
+        showingSentence = true;
+        var s = ""; // (string)
         if(checkBox1.checked){
-            definitionTextBox.innerHTML += "注音: ";
-            definitionTextBox.value += "注音: ";
+            s += "注音: ";
             console.log(self.parent.words);
             for(var i = 0; i<self.parent.words.length; i++){
                 console.log(self.parent.words[i].wordID);
-                definitionTextBox.innerHTML += Zhuyin[self.parent.words[i].wordID] + "   ";
-                definitionTextBox.value += Zhuyin[self.parent.words[i].wordID] + "   ";
+                s += Zhuyin[self.parent.words[i].wordID] + "   ";
+
             }
-            definitionTextBox.innerHTML += "\r\n";
-            definitionTextBox.value += "\r\n";
+            s += "\r\n";
+
         }
+        definitionTextBox.innerHTML = s;
+        definitionTextBox.value = s;
+        globalDefinitionB4 = s;
+        globalDefinitionB4 += "釋義: ";
         if(checkBox2.checked){
             self.showRandomDefinition();
         }
     }
-    this.showRandomDefinition = function(){
+    this.showRandomDefinition = function(){ // (void)
         definitionTextBox.innerHTML += "釋義: ";
         definitionTextBox.value += "釋義: ";
         var s = this.produceRandomDefinition();
@@ -35,7 +42,7 @@ function SentenceDefinition(){
         definitionTextBox.innerHTML += t;
         definitionTextBox.value += t;
     }
-    this.produceRandomDefinition = function(){
+    this.produceRandomDefinition = function(){ // (string)
         var s = "";
         for(var i = 0; i<self.parent.words.length; i++){
             var v = Definition[self.parent.words[i].wordID];
@@ -47,7 +54,7 @@ function SentenceDefinition(){
         }
         return s;
     }
-    this.processRandomDefinition = function(s){
+    this.processRandomDefinition = function(s){ // (string)
         var t = "";
         if(checkBox4.checked) {
             var r2 = Math.random();
@@ -56,6 +63,7 @@ function SentenceDefinition(){
             t += prefix[r2];
         }
         var dontLike = false;
+        globalDefinition = "";
         for(var i=0; i<s.length; i++){
             var c = s[i];
             if(c === '。'){
@@ -72,6 +80,7 @@ function SentenceDefinition(){
                         r4 *= connection.length;
                         r4 = Math.floor(r4);
                         t += connection[r4];
+                        globalDefinition += connection[r4];
                     }
                     c = '';
                 }
@@ -96,6 +105,7 @@ function SentenceDefinition(){
                 dontLike = false;
             }
             t += c;
+            globalDefinition += c;
             pre = c;
         }
         if(checkBox3.checked) {
@@ -104,6 +114,7 @@ function SentenceDefinition(){
             r3 = Math.floor(r3);
             t += suffix[r3];
         }
+        console.log(globalDefinition);
         return t;
     }
 }
