@@ -94,6 +94,9 @@ function suffix_initialization(){
     suffix[64] = "。賺！";
     suffix[65] = "哪~~~~";
     suffix[66] = " = =";
+    suffix[67] = "。咦？";
+    suffix[68] = "(?)";
+    suffix[69] = "。呱！";
 }
 
 function connection_initialization(){

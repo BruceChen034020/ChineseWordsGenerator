@@ -32,6 +32,10 @@ var checkBox1; // (input);
 var checkBox2; // (input)
 var checkBox1_label; // (Label)
 var checkBox2_label; // (Label)
+var checkBox3; // (input)
+var checkBox3_label; // (Label)
+var checkBox4; // (input)
+var checkBox4_label; // (Label)
 
 /* p5 functions */
 function setup(){
@@ -60,6 +64,21 @@ function setup(){
         checkBox2.type = "checkbox";
         checkBox1.checked = true;
         checkBox2.checked = true;
+
+        checkBox3 = document.createElement("input");
+        checkBox3.type = "checkbox";
+        checkBox3_label = document.createElement("label");
+        checkBox3_label.innerHTML = "加後綴";
+        checkBox3.checked = true;
+
+        checkBox4 = document.createElement("input");
+        checkBox4.type = "checkbox";
+        checkBox4_label = document.createElement("label");
+        checkBox4_label.innerHTML = "加前綴";
+        checkBox4.checked = true;
+
+        //checkBox1.addEventListener("click", )
+
         console.log(Zhuyin);
     }
     Zhuyin_Initialize();
@@ -102,12 +121,20 @@ function update(){
         checkBox1_label.remove();
         checkBox2.remove();
         checkBox2_label.remove();
+        checkBox3.remove();
+        checkBox3_label.remove();
+        checkBox4.remove();
+        checkBox4_label.remove();
     }
     document.body.appendChild(definitionLabel);
     document.body.appendChild(checkBox1);
     document.body.appendChild(checkBox1_label);
     document.body.appendChild(checkBox2);
     document.body.appendChild(checkBox2_label);
+    document.body.appendChild(checkBox3);
+    document.body.appendChild(checkBox3_label);
+    document.body.appendChild(checkBox4);
+    document.body.appendChild(checkBox4_label);
     P = createP('');
     document.body.appendChild(definitionTextBox);
     definitionDisplayed = true;

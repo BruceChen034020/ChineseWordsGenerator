@@ -21,13 +21,17 @@ function Word(){
     this.word_Click = function(){ // onclick event
         console.log("word_Click");
         console.log(checkBox1.checked);
-        definitionTextBox.innerHTML = "";        
+        definitionTextBox.innerHTML = "";
+        definitionTextBox.value = "";
         if(checkBox1.checked){
             definitionTextBox.innerHTML = "注音: ";
             definitionTextBox.innerHTML += Zhuyin[self.wordID] + "\r\n";
+            definitionTextBox.value = "注音: ";
+            definitionTextBox.value += Zhuyin[self.wordID] + "\r\n";
         }
         if(checkBox2.checked){
             definitionTextBox.innerHTML += "釋義: \r\n" + FullDefinition[self.wordID] + "\r\n";
+            definitionTextBox.value += "釋義: \r\n" + FullDefinition[self.wordID] + "\r\n";
         }
     }
     this.update = function(){

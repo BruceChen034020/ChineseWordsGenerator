@@ -10,14 +10,18 @@ function SentenceDefinition(){
     }
     this.sentence_click = function(){
         definitionTextBox.innerHTML = "";
+        definitionTextBox.value = "";
         if(checkBox1.checked){
             definitionTextBox.innerHTML += "注音: ";
+            definitionTextBox.value += "注音: ";
             console.log(self.parent.words);
             for(var i = 0; i<self.parent.words.length; i++){
                 console.log(self.parent.words[i].wordID);
                 definitionTextBox.innerHTML += Zhuyin[self.parent.words[i].wordID] + "   ";
+                definitionTextBox.value += Zhuyin[self.parent.words[i].wordID] + "   ";
             }
             definitionTextBox.innerHTML += "\r\n";
+            definitionTextBox.value += "\r\n";
         }
         if(checkBox2.checked){
             self.showRandomDefinition();
@@ -25,9 +29,11 @@ function SentenceDefinition(){
     }
     this.showRandomDefinition = function(){
         definitionTextBox.innerHTML += "釋義: ";
+        definitionTextBox.value += "釋義: ";
         var s = this.produceRandomDefinition();
         t = this.processRandomDefinition(s);
         definitionTextBox.innerHTML += t;
+        definitionTextBox.value += t;
     }
     this.produceRandomDefinition = function(){
         var s = "";
@@ -43,11 +49,13 @@ function SentenceDefinition(){
     }
     this.processRandomDefinition = function(s){
         var t = "";
-        var r2 = Math.random();
-        console.log("prefix.length: " + prefix.length);
-        r2 *= prefix.length;
-        r2 = Math.floor(r2);
-        t += prefix[r2];
+        if(checkBox4.checked) {
+            var r2 = Math.random();
+            r2 *= prefix.length;
+            r2 = Math.floor(r2);
+            t += prefix[r2];
+        }
+        var dontLike = false;
         for(var i=0; i<s.length; i++){
             var c = s[i];
             if(c === '。'){
@@ -68,19 +76,34 @@ function SentenceDefinition(){
                     c = '';
                 }
             }
-            if(c ==  '('){
-                if(s[i+1] == ')'){
+            if(c ===  '('){
+                if( ')' === s[i+1])
+                {
                     c = '';
                     i++;
                 }
             }
+            if(s[i]==='參'){
+                if(s[i+1]==='見' && s[i+2] === '「'){
+                    i = i+2;
+                    c = '';
+                    dontLike = true;
+                }
+            }
+            if(dontLike && s[i] === '」'){
+                i = i+1;
+                c = '';
+                dontLike = false;
+            }
             t += c;
             pre = c;
         }
-        var r3 = Math.random();
-        r3 *= suffix.length;
-        r3 = Math.floor(r3);
-        t += suffix[r3];
+        if(checkBox3.checked) {
+            var r3 = Math.random();
+            r3 *= suffix.length;
+            r3 = Math.floor(r3);
+            t += suffix[r3];
+        }
         return t;
     }
 }
