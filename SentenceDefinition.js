@@ -1,6 +1,7 @@
 var globalDefinition; // global value for the definition in the textbox (string)
 var globalDefinitionB4; // global value for the text before definition in the textbox (string)
 var showingSentence; // whether this is showing the sentence definition (boolean)
+var thinkingIndex; // temporary variable (integer)
 
 function SentenceDefinition(){
     this.button; // (Button)
@@ -13,6 +14,7 @@ function SentenceDefinition(){
         this.button.addEventListener("click", this.sentence_click);
     }
     this.sentence_click = function(){ // onclick event (void)
+        window.scrollTo(0, document.body.scrollHeight);
         showingSentence = true;
         var s = ""; // (string)
         if(checkBox1.checked){
@@ -29,7 +31,6 @@ function SentenceDefinition(){
         definitionTextBox.innerHTML = s;
         definitionTextBox.value = s;
         globalDefinitionB4 = s;
-        globalDefinitionB4 += "釋義: ";
         if(checkBox2.checked){
             self.showRandomDefinition();
         }
@@ -39,8 +40,12 @@ function SentenceDefinition(){
         definitionTextBox.value += "釋義: ";
         var s = this.produceRandomDefinition();
         t = this.processRandomDefinition(s);
-        definitionTextBox.innerHTML += t;
-        definitionTextBox.value += t;
+        if(checkBox5.checked)
+            slowprint(t, thinkingIndex);
+        else{
+            definitionTextBox.innerHTML += t;
+            definitionTextBox.value += t;
+        }
     }
     this.produceRandomDefinition = function(){ // (string)
         var s = "";
@@ -56,11 +61,13 @@ function SentenceDefinition(){
     }
     this.processRandomDefinition = function(s){ // (string)
         var t = "";
+        thinkingIndex = 0;
         if(checkBox4.checked) {
             var r2 = Math.random();
             r2 *= prefix.length;
             r2 = Math.floor(r2);
             t += prefix[r2];
+            thinkingIndex = prefix[r2].length;
         }
         var dontLike = false;
         globalDefinition = "";
