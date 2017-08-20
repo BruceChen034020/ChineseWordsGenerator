@@ -21,6 +21,9 @@ function prefix_initialization(){
     prefix[15] = "噢！";
     prefix[16] = "哇！";
     prefix[17] = "鏘鏘鏘~~~";
+    prefix[18] = "挪，";
+    prefix[19] = "喂！";
+    prefix[20] = "嘿！";
 }
 
 function suffix_initialization(){
@@ -97,6 +100,41 @@ function suffix_initialization(){
     suffix[67] = "。咦？";
     suffix[68] = "(?)";
     suffix[69] = "。呱！";
+    suffix[70] = "니다.";
+    suffix[71] = "。\r\n被盜。";
+    suffix[72] = "ですか？";
+    suffix[73] = "です。";
+    suffix[74] = "(誤)";
+    suffix[75] = "(大誤)";
+    suffix[76] = "(X)";
+    suffix[77] = "(O)";
+    suffix[78] = " lol";
+    suffix[79] = " 2333";
+    suffix[80] = "廠廠";
+    suffix[81] = "......應該";
+    suffix[82] = "？";
+    suffix[83] = "ㄇ？";
+    suffix[84] = "(?";
+    suffix[85] = "吧？";
+    suffix[86] = "r?";
+    suffix[87] = "。所以哩？";
+    suffix[88] = "R";
+    suffix[89] = "=ㄦ=";
+    suffix[90] = "。是不是？";
+    suffix[91] = "。 Isn't it?";
+    suffix[92] = "。是不是這樣說？";
+    suffix[93] = "啊？";
+    suffix[94] = "ㄛ";
+    suffix[95] = " <3";
+    suffix[96] = "。電<(_ _)>";
+    suffix[97] = "嘛！";
+    suffix[98] = "ㄌ";
+    suffix[99] = "qq";
+    suffix[100] = "??";
+    suffix[101] = "ww";
+    suffix[102] = "XDD";
+    suffix[103] = "。 Over.";
+
 }
 
 function connection_initialization(){
