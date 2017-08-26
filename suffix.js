@@ -1,3 +1,5 @@
+/* Latest update: 2017/8/26 */
+
 var prefix = [];
 var suffix = [];
 var connection = [];
@@ -24,6 +26,9 @@ function prefix_initialization(){
     prefix[18] = "挪，";
     prefix[19] = "喂！";
     prefix[20] = "嘿！";
+    prefix[21] = "きゃあああああああああ";
+    prefix[22] = "啊！";
+    prefix[23] = "啊啊啊啊啊~";
 }
 
 function suffix_initialization(){
@@ -100,7 +105,7 @@ function suffix_initialization(){
     suffix[67] = "。咦？";
     suffix[68] = "(?)";
     suffix[69] = "。呱！";
-    suffix[70] = "니다.";
+    suffix[70] = "습니다.";
     suffix[71] = "。\r\n被盜。";
     suffix[72] = "ですか？";
     suffix[73] = "です。";
@@ -134,7 +139,7 @@ function suffix_initialization(){
     suffix[101] = "ww";
     suffix[102] = "XDD";
     suffix[103] = "。 Over.";
-
+    suffix[104] = "啊啊啊啊啊~";
 }
 
 function connection_initialization(){
