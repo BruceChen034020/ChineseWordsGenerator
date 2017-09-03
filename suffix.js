@@ -1,4 +1,4 @@
-/* Latest update: 2017/8/26 */
+﻿/* Latest update: 2017/9/3 */
 
 var prefix = [];
 var suffix = [];
@@ -140,6 +140,8 @@ function suffix_initialization(){
     suffix[102] = "XDD";
     suffix[103] = "。 Over.";
     suffix[104] = "啊啊啊啊啊~";
+    suffix[105] = "吶～";
+    suffix[106] = "ねぇ～";
 }
 
 function connection_initialization(){
