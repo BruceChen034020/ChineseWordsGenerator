@@ -1,4 +1,4 @@
-﻿/* Latest update: 2017/9/23 */
+﻿/* Latest update: 2017/9/23 v2 */
 
 var prefix = [];
 var suffix = [];
@@ -30,6 +30,8 @@ function prefix_initialization(){
     prefix[22] = "啊！";
     prefix[23] = "啊啊啊啊啊~";
     prefix[24] = "嗷嗷嗷";
+    prefix[25] = "ねぇ～";
+    prefix[26] = "吶～";
 }
 
 function suffix_initialization(){
